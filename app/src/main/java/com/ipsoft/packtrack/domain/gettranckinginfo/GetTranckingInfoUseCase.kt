@@ -19,7 +19,7 @@ class GetTranckingInfoUseCase @Inject constructor(
         try {
             emit(Resource.Loading<TrackInfo>())
             val trackInfo = repository.getTrackInfo(packTranckingCode).toTrackInfo()
-            emit(Resource.Success(trackInfo))
+            emit(Resource.Success<TrackInfo>(trackInfo))
 
         } catch (e: Exception) {
             emit(Resource.Error<TrackInfo>(e.localizedMessage ?: "An unexpected error occurred"))
