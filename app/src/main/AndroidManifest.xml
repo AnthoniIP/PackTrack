@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ipsoft.packtrack">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="PackTrackApplication"
         android:allowBackup="true"

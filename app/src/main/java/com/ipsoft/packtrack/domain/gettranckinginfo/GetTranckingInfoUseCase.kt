@@ -6,6 +6,7 @@ import com.ipsoft.packtrack.domain.model.TrackInfo
 import com.ipsoft.packtrack.domain.repository.TrackRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -17,7 +18,9 @@ class GetTranckingInfoUseCase @Inject constructor(
 
         try {
             emit(Resource.Loading<TrackInfo>())
+
             val trackInfo = repository.getTrackInfo(packTranckingCode).toTrackInfo()
+            Timber.d("----- $trackInfo")
             emit(Resource.Success(trackInfo))
 
         } catch (e: Exception) {

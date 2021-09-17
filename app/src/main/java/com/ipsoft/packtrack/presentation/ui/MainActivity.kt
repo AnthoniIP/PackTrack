@@ -11,6 +11,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ipsoft.packtrack.common.Constants
+import com.ipsoft.packtrack.common.Constants.PARAM_PACK_TRACK_CODE
 import com.ipsoft.packtrack.presentation.Screen
 import com.ipsoft.packtrack.presentation.pack_detail.PackDetailScreen
 import com.ipsoft.packtrack.presentation.packs_list.PackListScreen
@@ -36,7 +38,7 @@ class MainActivity : ComponentActivity() {
                             PackListScreen(navController = navController)
                         }
                         composable(
-                            route = Screen.PackDetailScreen.route + "/{packId}"
+                            route = Screen.PackDetailScreen.route + "/{${PARAM_PACK_TRACK_CODE}}"
                         ) {
                             PackDetailScreen()
                         }
