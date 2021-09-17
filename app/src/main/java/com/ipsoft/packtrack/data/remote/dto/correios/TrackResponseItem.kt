@@ -13,7 +13,7 @@ data class TrackResponseItem(
     @SerializedName("descricao")
     val descricao: String,
     @SerializedName("destino")
-    val destino: Destino,
+    val destino: Destino? = null,
     @SerializedName("uf")
     val uf: String
 )

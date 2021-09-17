@@ -1,9 +1,6 @@
 package com.ipsoft.packtrack.presentation.pack_detail
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -23,14 +20,20 @@ fun PackDetailScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         state.track?.let { track ->
 
-            Column(
-                Modifier.fillMaxSize()
-            ) {
+            Column(Modifier.fillMaxSize(), Arrangement.SpaceEvenly) {
                 track.trackItemList.forEach {
-                    Text(text = it.descricao)
+                    Column {
+                        Text(text = "Descrição: ${it.descricao}")
+                        Text(text = "Cidade: ${it.cidade}")
+                        Text(text = "Data: ${it.dataHora}")
+                        Text(text = "Uf: ${it.uf}")
+                        it.destino?.let {
+                            Text(text = "Destino: ${it.cidade} - ${it.uf}")
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
                 }
             }
-
 
         }
 

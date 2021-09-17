@@ -29,12 +29,12 @@ fun PackListScreen(navController: NavHostController) {
 
                 value = text,
                 onValueChange = {
-                    if (it.length <= 13) {
-                        currentColor = red
+                    text = it
+                    currentColor = if (it.length != 13) {
+                        red
 
-                        text = it
                     } else {
-                        currentColor = green
+                        green
                     }
                 },
                 label = { Text("Código") },

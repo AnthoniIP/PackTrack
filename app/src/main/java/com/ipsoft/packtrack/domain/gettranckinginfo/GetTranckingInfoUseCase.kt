@@ -18,9 +18,7 @@ class GetTranckingInfoUseCase @Inject constructor(
 
         try {
             emit(Resource.Loading<TrackInfo>())
-
             val trackInfo = repository.getTrackInfo(packTranckingCode).toTrackInfo()
-            Timber.d("----- $trackInfo")
             emit(Resource.Success(trackInfo))
 
         } catch (e: Exception) {
