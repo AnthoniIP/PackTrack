@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -23,8 +24,20 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            debuggable false
+            shrinkResources true
+            resValue "string", "app_name", "PackTrack"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        def alphaVersion = "-alpha"
+        debug {
+            applicationIdSuffix ".stg"
+            versionNameSuffix "$alphaVersion-stg"
+            resValue "string", "app_name", "PackTrack - STG"
+            minifyEnabled false
+            debuggable true
+            shrinkResources false
         }
     }
     compileOptions {
@@ -93,4 +106,7 @@ dependencies {
 
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
 }
