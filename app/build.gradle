@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -99,4 +101,11 @@ dependencies {
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
+
+    //Crashlitycs
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //Performance
+    implementation 'com.google.firebase:firebase-perf-ktx'
 }
