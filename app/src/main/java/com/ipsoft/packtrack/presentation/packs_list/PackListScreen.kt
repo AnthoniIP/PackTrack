@@ -11,7 +11,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.ipsoft.packtrack.presentation.Screen
-import com.ipsoft.packtrack.presentation.ui.theme.*
+import com.ipsoft.packtrack.presentation.ui.theme.DarkGray
+import com.ipsoft.packtrack.presentation.ui.theme.green
+import com.ipsoft.packtrack.presentation.ui.theme.red
 
 @Composable
 fun PackListScreen(navController: NavHostController) {
@@ -29,13 +31,16 @@ fun PackListScreen(navController: NavHostController) {
 
                 value = text,
                 onValueChange = {
-                    text = it
-                    currentColor = if (it.length != 13) {
-                        red
+                    if (it.length <= 13) {
+                        text = it
+                        currentColor = if (it.length != 13) {
+                            red
 
-                    } else {
-                        green
+                        } else {
+                            green
+                        }
                     }
+
                 },
                 label = { Text("Código") },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -55,7 +60,14 @@ fun PackListScreen(navController: NavHostController) {
                     }
                 }
             ) {
-                Text(text = "Pesquisar", style = TextStyle(color = DarkGray,fontSize = 16.sp,fontWeight = FontWeight.W800))
+                Text(
+                    text = "Pesquisar",
+                    style = TextStyle(
+                        color = DarkGray,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.W800
+                    )
+                )
             }
         }
 
