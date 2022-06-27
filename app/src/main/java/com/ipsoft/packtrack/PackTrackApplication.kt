@@ -12,7 +12,7 @@ class PackTrackApplication : Application() {
         super.onCreate()
 
         if (BuildConfig.DEBUG) {
-            Timber.plant(DebugTree());
+            Timber.plant(DebugTree())
         }
     }
     }

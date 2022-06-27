@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PackDetailViewModel @Inject constructor(
-    private val getTranckingInfoUseCase: GetTranckingInfoUseCase,
+    private val getTrackingInfoUseCase: GetTranckingInfoUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -28,7 +28,7 @@ class PackDetailViewModel @Inject constructor(
         }
     }
 
-    private fun getTrack(trackCode: String) = getTranckingInfoUseCase(trackCode).onEach { result ->
+    private fun getTrack(trackCode: String) = getTrackingInfoUseCase(trackCode).onEach { result ->
         when (result) {
             is Resource.Success -> {
                 _state.value = TrackDetailState(track = result.data)

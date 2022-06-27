@@ -1,5 +1,6 @@
 package com.ipsoft.packtrack.di
 
+import com.ipsoft.packtrack.BuildConfig
 import com.ipsoft.packtrack.common.Constants
 import com.ipsoft.packtrack.data.remote.CorreiosApi
 import com.ipsoft.packtrack.data.repository.TrackRepositoryImpl
@@ -8,11 +9,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -24,10 +25,18 @@ object AppModule {
 
 
         val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        if (BuildConfig.DEBUG) {
+            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        } else {
+            loggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
+        }
+
         val okHttpClient: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
+
+
 
 
 
@@ -44,6 +53,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCoinRepository(api: CorreiosApi): TrackRepository = TrackRepositoryImpl(api)
+    fun provideTrackRepository(api: CorreiosApi): TrackRepository = TrackRepositoryImpl(api)
 
 }
