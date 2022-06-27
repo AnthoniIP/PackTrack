@@ -6,23 +6,22 @@ import com.ipsoft.packtrack.domain.model.TrackInfo
 import com.ipsoft.packtrack.domain.repository.TrackRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import timber.log.Timber
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetTranckingInfoUseCase @Inject constructor(
+class GetTrackingInfoUseCase @Inject constructor(
     private val repository: TrackRepository
 ) {
 
-    operator fun invoke(packTranckingCode: String): Flow<Resource<TrackInfo>> = flow {
+    operator fun invoke(packTrackingCode: String): Flow<Resource<TrackInfo>> = flow {
 
         try {
-            emit(Resource.Loading<TrackInfo>())
-            val trackInfo = repository.getTrackInfo(packTranckingCode).toTrackInfo()
-            emit(Resource.Success<TrackInfo>(trackInfo))
+            emit(Resource.Loading())
+            val trackInfo = repository.getTrackInfo(packTrackingCode).toTrackInfo()
+            emit(Resource.Success(trackInfo))
 
         } catch (e: Exception) {
-            emit(Resource.Error<TrackInfo>(e.localizedMessage ?: "An unexpected error occurred"))
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
         }
 
     }

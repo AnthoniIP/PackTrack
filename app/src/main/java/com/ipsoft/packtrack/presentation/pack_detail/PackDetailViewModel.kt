@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipsoft.packtrack.common.Constants
 import com.ipsoft.packtrack.common.Resource
-import com.ipsoft.packtrack.domain.gettranckinginfo.GetTranckingInfoUseCase
+import com.ipsoft.packtrack.domain.gettranckinginfo.GetTrackingInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PackDetailViewModel @Inject constructor(
-    private val getTrackingInfoUseCase: GetTranckingInfoUseCase,
+    private val getTrackingInfoUseCase: GetTrackingInfoUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
