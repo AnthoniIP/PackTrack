@@ -9,9 +9,10 @@ import com.ipsoft.packtrack.common.Constants
 import com.ipsoft.packtrack.common.Resource
 import com.ipsoft.packtrack.domain.gettranckinginfo.GetTrackingInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
+import timber.log.Timber
 
 @HiltViewModel
 class PackDetailViewModel @Inject constructor(
@@ -29,6 +30,7 @@ class PackDetailViewModel @Inject constructor(
     }
 
     private fun getTrack(trackCode: String) = getTrackingInfoUseCase(trackCode).onEach { result ->
+
         when (result) {
             is Resource.Success -> {
                 _state.value = TrackDetailState(track = result.data)

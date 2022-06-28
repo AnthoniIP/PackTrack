@@ -35,7 +35,7 @@ import com.ipsoft.packtrack.presentation.ui.theme.green
 import com.ipsoft.packtrack.presentation.ui.theme.red
 
 @Composable
-fun PackListScreen(navController: NavHostController) {
+fun AddPackScreen(navController: NavHostController) {
 
     var text by remember { mutableStateOf("") }
     var currentColor by remember { mutableStateOf(red) }

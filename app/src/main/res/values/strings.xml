@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">PackTrack</string>
     <string name="invalid_code">Código invalido</string>
     <string name="code">Código</string>
     <string name="add">Adicionar</string>

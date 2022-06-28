@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PackDetailScreen(
-    viewModel: PackDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: PackDetailViewModel
 ) {
 
 

@@ -13,7 +13,7 @@ import com.ipsoft.packtrack.common.Constants.PARAM_PACK_TRACK_CODE
 import com.ipsoft.packtrack.presentation.Screen
 import com.ipsoft.packtrack.presentation.pack_detail.PackDetailScreen
 import com.ipsoft.packtrack.presentation.pack_detail.PackDetailViewModel
-import com.ipsoft.packtrack.presentation.packs_list.PackListScreen
+import com.ipsoft.packtrack.presentation.packs_list.AddPackScreen
 import com.ipsoft.packtrack.presentation.ui.theme.PackTrackTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,12 +32,12 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.PackListScreen.route
+                        startDestination = Screen.AddPackScreen.route
                     ) {
                         composable(
-                            route = Screen.PackListScreen.route
+                            route = Screen.AddPackScreen.route
                         ) {
-                            PackListScreen(navController = navController)
+                            AddPackScreen(navController = navController)
                         }
                         composable(
                             route = Screen.PackDetailScreen.route + "/{${PARAM_PACK_TRACK_CODE}}"

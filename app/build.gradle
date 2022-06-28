@@ -22,10 +22,18 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
+        debug {
             debuggable true
-            shrinkResources false
+            applicationIdSuffix ".dev"
+            versionNameSuffix "dev"
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "PackTrack - Dev"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            debuggable false
+            shrinkResources true
             resValue "string", "app_name", "PackTrack"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
