@@ -1,23 +1,21 @@
-package com.ipsoft.packtrack.domain.gettranckinginfo
+package com.ipsoft.packtrack.domain.usecases
 
 import com.ipsoft.packtrack.common.Resource
-import com.ipsoft.packtrack.data.remote.dto.correios.toTrackInfo
-import com.ipsoft.packtrack.domain.model.TrackInfo
+import com.ipsoft.packtrack.data.remote.dto.correios.CorreioTrackResponse
 import com.ipsoft.packtrack.domain.repository.TrackRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.lang.Exception
-import javax.inject.Inject
 
 class GetTrackingInfoUseCase @Inject constructor(
     private val repository: TrackRepository
 ) {
 
-    operator fun invoke(packTrackingCode: String): Flow<Resource<TrackInfo>> = flow {
+    operator fun invoke(packTrackingCode: String): Flow<Resource<CorreioTrackResponse>> = flow {
 
         try {
             emit(Resource.Loading())
-            val trackInfo = repository.getTrackInfo(packTrackingCode).toTrackInfo()
+            val trackInfo = repository.getTrackInfo(packTrackingCode)
             emit(Resource.Success(trackInfo))
 
         } catch (e: Exception) {

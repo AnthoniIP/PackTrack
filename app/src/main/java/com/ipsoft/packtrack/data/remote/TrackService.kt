@@ -1,6 +1,6 @@
-package com.ipsoft.packtrack.data.remote.dto.correios
+package com.ipsoft.packtrack.data.remote
 
-import com.ipsoft.packtrack.data.remote.TrackApi
+import com.ipsoft.packtrack.data.remote.dto.correios.CorreioTrackResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ class TrackService
 
     private val api by lazy { retrofit.create(TrackApi::class.java) }
 
-    override suspend fun getTrackDetails(trackCode: String): TrackResponse =
+    override suspend fun getTrackDetails(trackCode: String): CorreioTrackResponse =
         api.getTrackDetails(trackCode)
 
 

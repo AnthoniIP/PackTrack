@@ -1,4 +1,4 @@
-package com.ipsoft.packtrack.presentation.packs_list
+package com.ipsoft.packtrack.presentation.addpack
 
 import android.content.Context
 import android.widget.Toast
@@ -36,7 +36,9 @@ import com.ipsoft.packtrack.presentation.ui.theme.green
 import com.ipsoft.packtrack.presentation.ui.theme.red
 
 @Composable
-fun AddPackScreen(navController: NavHostController) {
+fun AddPackScreen(
+    navController: NavHostController
+) {
 
     var text by remember { mutableStateOf("") }
     var currentColor by remember { mutableStateOf(red) }

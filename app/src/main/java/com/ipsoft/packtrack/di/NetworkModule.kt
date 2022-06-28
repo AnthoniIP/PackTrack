@@ -3,7 +3,7 @@ package com.ipsoft.packtrack.di
 import com.ipsoft.packtrack.BuildConfig
 import com.ipsoft.packtrack.common.Constants
 import com.ipsoft.packtrack.data.remote.TrackApi
-import com.ipsoft.packtrack.data.remote.dto.correios.TrackService
+import com.ipsoft.packtrack.data.remote.TrackService
 import com.ipsoft.packtrack.data.repository.TrackRepositoryImpl
 import com.ipsoft.packtrack.domain.repository.TrackRepository
 import dagger.Module

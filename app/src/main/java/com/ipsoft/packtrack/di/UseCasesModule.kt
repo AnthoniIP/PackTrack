@@ -1,6 +1,6 @@
 package com.ipsoft.packtrack.di
 
-import com.ipsoft.packtrack.domain.gettranckinginfo.GetTrackingInfoUseCase
+import com.ipsoft.packtrack.domain.usecases.GetTrackingInfoUseCase
 import com.ipsoft.packtrack.domain.repository.TrackRepository
 import dagger.Module
 import dagger.Provides
