@@ -12,7 +12,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import timber.log.Timber
 
 @HiltViewModel
 class PackDetailViewModel @Inject constructor(
@@ -20,8 +19,8 @@ class PackDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(TrackDetailState())
-    val state: State<TrackDetailState> = _state
+    private val _trackDetails = mutableStateOf(TrackDetailState())
+    val trackDetails: State<TrackDetailState> = _trackDetails
 
     init {
         savedStateHandle.get<String>(Constants.PARAM_PACK_TRACK_CODE)?.let { trackCode ->
@@ -33,15 +32,15 @@ class PackDetailViewModel @Inject constructor(
 
         when (result) {
             is Resource.Success -> {
-                _state.value = TrackDetailState(track = result.data)
+                _trackDetails.value = TrackDetailState(track = result.data)
             }
             is Resource.Error -> {
-                _state.value = TrackDetailState(
+                _trackDetails.value = TrackDetailState(
                     error = result.message ?: "An unexpected error occured"
                 )
             }
             is Resource.Loading -> {
-                _state.value = TrackDetailState(isLoading = true)
+                _trackDetails.value = TrackDetailState(isLoading = true)
             }
         }
     }.launchIn(viewModelScope)

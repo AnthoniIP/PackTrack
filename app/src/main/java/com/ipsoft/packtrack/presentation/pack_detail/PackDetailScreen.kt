@@ -14,17 +14,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import timber.log.Timber
 
 @Composable
 fun PackDetailScreen(
-    viewModel: PackDetailViewModel
+    viewModel: PackDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
 
 
-    val state = viewModel.state.value
+    val trackDetails = viewModel.trackDetails.value
+
+    Timber.i("------ $trackDetails")
     Box(modifier = Modifier.fillMaxSize()) {
-        state.track?.let { track ->
+        trackDetails.track?.let { track ->
 
             Column(Modifier.fillMaxSize(), Arrangement.SpaceEvenly) {
                 track.trackItemList.forEach {
@@ -43,11 +47,11 @@ fun PackDetailScreen(
 
         }
 
-        if (state.error.isNotBlank()) {
+        if (trackDetails.error.isNotBlank()) {
 
             Box(modifier = Modifier.fillMaxSize()) {
                 Text(
-                    text = state.error,
+                    text = trackDetails.error,
                     color = MaterialTheme.colors.error,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -60,12 +64,18 @@ fun PackDetailScreen(
             }
 
         }
-        if (state.isLoading) {
+        if (trackDetails.isLoading) {
             Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(Modifier.align(Alignment.Center))
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DetailsPreview() {
+    PackDetailScreen()
 }
 
 

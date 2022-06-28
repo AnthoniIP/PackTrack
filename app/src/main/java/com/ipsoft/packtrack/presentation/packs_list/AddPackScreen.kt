@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.ipsoft.packtrack.R
+import com.ipsoft.packtrack.common.utils.validator.CodeSizeValidator
 import com.ipsoft.packtrack.common.utils.validator.CorreiosCodeValidator
 import com.ipsoft.packtrack.presentation.Screen
 import com.ipsoft.packtrack.presentation.ui.theme.DarkGray
@@ -51,8 +52,10 @@ fun AddPackScreen(navController: NavHostController) {
             OutlinedTextField(
                 value = text,
                 onValueChange = {
-                    text = it.uppercase()
+                    val codeSizeValidator = CodeSizeValidator(it).validate()
+                    if (codeSizeValidator.isSuccess) text = it.uppercase()
                     val codeValidator = CorreiosCodeValidator(text).validate()
+
                     if (codeValidator.isSuccess) {
                         currentColor = if (codeValidator.isSuccess) {
                             green
