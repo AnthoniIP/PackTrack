@@ -56,13 +56,12 @@ fun AddPackScreen(navController: NavHostController) {
                     if (codeSizeValidator.isSuccess) text = it.uppercase()
                     val codeValidator = CorreiosCodeValidator(text).validate()
 
-                    if (codeValidator.isSuccess) {
-                        currentColor = if (codeValidator.isSuccess) {
-                            green
 
-                        } else {
-                            red
-                        }
+                    currentColor = if (codeValidator.isSuccess) {
+                        green
+
+                    } else {
+                        red
                     }
 
                 },
