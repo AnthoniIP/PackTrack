@@ -20,8 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: PackDetailViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -41,7 +39,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.PackDetailScreen.route + "/{${PARAM_PACK_TRACK_CODE}}"
                         ) {
-                            PackDetailScreen(viewModel)
+                            PackDetailScreen()
                         }
                     }
                 }

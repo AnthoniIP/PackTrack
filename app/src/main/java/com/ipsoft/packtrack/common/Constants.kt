@@ -3,7 +3,7 @@ package com.ipsoft.packtrack.common
 object Constants {
     const val CODE_SIZE = 13
 
-    const val BASE_URL = "https://api.rastrearpedidos.com.br/api/"
+    const val BASE_URL = "https://proxyapp.correios.com.br/"
 
     const val PARAM_PACK_TRACK_CODE = "packTrackCode"
 

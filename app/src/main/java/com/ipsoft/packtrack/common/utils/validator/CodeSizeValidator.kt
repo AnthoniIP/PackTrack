@@ -1,6 +1,5 @@
 package com.ipsoft.packtrack.common.utils.validator
 
-import android.text.TextUtils
 import com.ipsoft.packtrack.R
 import com.ipsoft.packtrack.common.Constants
 

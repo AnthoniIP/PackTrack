@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface TrackApi {
 
-    @GET("rastreio/v1")
+    @GET("v1/sro-rastro/")
     suspend fun getTrackDetails(@Query("codigo") trackCode: String) : TrackResponse
 
 }
